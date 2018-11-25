@@ -5,13 +5,16 @@ library(dplyr)
 head(women)
 #predict weight for new height
 plot(women)
-fit1 = lm(weight ~ height, data=women)
-summary(fit1)
+
+fit1 = lm(weight ~ height, data=women) #creating the regression model
+summary(fit1) 
+#use multiple R sq - simple linear regression, above .6 is a good model
+#use adjusted R sq - multiple linear regression
 range(women$height)
 (ndata1=data.frame(height=c(59.5, 62.5)))
 (predicted1 = predict(fit1, newdata= ndata1))
 cbind(ndata1, predicted1)
-plot(fit1) #check for assumptions
+plot(fit1) #check for assumptions #cook's distance is used to find the outliers
 par(mfrow=c(2,2))
 plot(fit1)
 par(mfrow=c(1,1))
